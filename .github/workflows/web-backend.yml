@@ -25,5 +25,5 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -r requirements.txt -e "../../agent[dev]"
-      - run: python -m pytest -q tests
-      - run: python -m ruff check --config ../../agent/pyproject.toml app tests
+      - run: python -m compileall -q app
+      - run: python -m ruff check --config ../../agent/pyproject.toml app

@@ -1,16 +1,29 @@
-# 管策智研 RAG
+# RAG 检索与运行数据说明
 
-本提交仓库仅保留**运行既有发布库所需的源码、恢复程序、配置示例与测试**，不再附带原始政策语料、离线切块工程、历史设计方案和历史运行报告。
+本目录只保留**运行已建政策知识库所需的检索源码**、无凭据恢复工具和本 README；不包含原始语料、索引、OCR 批次、向量缓存或模型权重。
 
-## 有效入口
+## 检索工程
 
-- [检索工程](检索工程/README.md)：提供政策检索、文本 / OCR / 图片回取，供 Agent 集成。
-- [本地存储及恢复工具](向量化与存储工程（降级版）/README.md)：恢复 SQLite、BM25S、Qdrant Local 与发布快照。
-- [RAG 数据交付指南](运行数据交付.md)：下载、校验、恢复独立运行库。
-- [运行数据清单](运行数据清单.json)：冻结版本和交付范围。
+在仓库根目录安装：
 
-## 数据边界
+```powershell
+python -m pip install -e "./rag库/检索工程"
+```
 
-已建的 506 篇政策 RAG 运行库由[原开发仓库 Release](https://github.com/SKD-Agent-Frontier/guance-policy-intelligence/releases/tag/rag-v0.4.0-data-20261024-r1)分发；包含已冻结的 Markdown、媒体、元数据、索引及必要缓存。**不能只复制部分索引文件**，需按数据交付指南恢复完整包，之后通过 `RAG_STORE_PROJECT` 配置运行库路径。
+Python 包为 `guance_rag`，使用 `RuntimeOptions(store_project=Path(...), mode="bm25")` 和 `RagKnowledgeBase` 调用；应用侧通过 `KB_BACKEND=rag`、`RAG_STORE_PROJECT` 连接。
 
-本仓库的 BM25 运行无需重建语料或重算向量；dense/hybrid 的新查询向量可能依赖与原发布库一致的嵌入模型服务。原始语料的重新切块、OCR 及重建库工作属于原开发工程，不属于此提交源码的运行流程。
+## 外部数据恢复
+
+系统**不能仅凭源码运行真实知识库检索**。具有权限的使用者可从[原项目 RAG v0.4.0 Release](https://github.com/SKD-Agent-Frontier/guance-policy-intelligence/releases/tag/rag-v0.4.0-data-20261024-r1)下载全部分卷、交付清单及 SHA-256 文件。
+
+恢复命令（PowerShell 示例）：
+
+```powershell
+python "rag库/restore_delivery.py" --manifest "<download-dir>/delivery-manifest.json" --destination "<new-runtime-dir>"
+```
+
+恢复程序验证分卷、压缩包和内容哈希，拒绝写入已有目录；建议预留足够磁盘空间。恢复完成后，将 Agent 的 `RAG_STORE_PROJECT` 设为 `<new-runtime-dir>`。
+
+BM25 与已有冻结文本、图片的回取不需要重新建库。dense/hybrid 查询可能需要授权访问与原发布版本一致的 embedding 服务；私有接口和密钥不随源码提供。
+
+RAG 检索 API 的细节见 [检索模块 README](检索工程/README.md)。

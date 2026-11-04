@@ -33,7 +33,7 @@ class Settings:
     top_k_max: int = 20
     search_snippet_chars: int = 300
     read_max_chars: int = 6000
-    kb_backend: str = "mock"
+    kb_backend: str = "rag"
     rag_store_project: str = ""   # 留空则用 guance_rag 的默认存储工程路径
     rag_mode: str = "bm25"
     mock_kb_path: Path = ROOT / "mock_data/kb.json"

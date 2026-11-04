@@ -1,33 +1,53 @@
 # 管策智研｜政策智能研究 Agent
 
-本仓库是**赛事提交用的精简源码副本**。保留 Agent、已建知识库检索与恢复工具、Web 前后端、必要配置示例和自动化测试；不包含原始语料及历史研发产物。
+本仓库为**源码提交版**：只包含运行项目所需的 Python / TypeScript 源代码、前端静态资源、依赖清单、无密钥配置模板和 README。**不包含政策数据集、索引数据、模型权重、训练/评测文件、真实 API 密钥、运行日志和数据库。**
 
-## 工程入口
+## 项目代码
 
-| 模块 | 功能 | 入口 |
-| --- | --- | --- |
-| Agent | 政策问答、要素提取、证据引用与多文献分析 | [agent/README.md](agent/README.md) |
-| RAG | 已发布知识库检索、逐字原文及图片回读 | [rag库/检索工程](rag库/检索工程/README.md) |
-| RAG 运行数据恢复 | 独立恢复 SQLite、BM25/Qdrant、冻结原文和媒体 | [运行数据交付](rag库/运行数据交付.md) |
-| Web 后端 | FastAPI 研究接口与政策目录 | [web/backend/README.md](web/backend/README.md) |
-| Web 前端 | 政策研究交互页面 | [web/frontend/README.md](web/frontend/README.md) |
+- `agent/`：政策研究 Agent，执行研究准备、检索决策、引文核验、结果组织及多轮任务。
+- `rag库/检索工程/`：检索已发布政策知识库的 Python 后端。
+- `rag库/restore_delivery.py`：独立知识库数据包的安全恢复工具。
+- `web/backend/`：FastAPI 服务，提供政策问答、文献目录、**Word / Excel 导出**。
+- `web/frontend/`：React / Vite 页面，研究答案下方可分别导出 DOCX、XLSX。
 
-## 数据、安装和启动
+## 环境
 
-本仓库**不包含原始语料库和离线切块工程**；系统使用已建好的 506 篇政策 RAG 发布数据。该数据包由原开发仓库的 [RAG v0.4.0 Release](https://github.com/SKD-Agent-Frontier/guance-policy-intelligence/releases/tag/rag-v0.4.0-data-20261024-r1) 独立提供。请按照 [恢复说明](rag库/运行数据交付.md) 下载全部分卷、校验并恢复，然后设置 `RAG_STORE_PROJECT` 指向恢复后的目录。
+Python **3.11+**、Node.js **22+**。项目还需要独立配置**有授权的模型服务**和**RAG 运行数据**，它们不随源码提交。RAG 发布库可由有权访问者从[原工程 Release](https://github.com/SKD-Agent-Frontier/guance-policy-intelligence/releases/tag/rag-v0.4.0-data-20261024-r1)获取；见 [RAG 使用与恢复说明](rag库/README.md)。
 
-从仓库根目录安装 Agent 和真实 RAG 检索依赖：
+## 安装
+
+在仓库根目录执行：
 
 ```powershell
-python -m pip install -e './agent[dev]'
-python -m pip install -e './rag库/检索工程'
-python -m pip install -r web/backend/requirements.txt
+python -m pip install -e "./agent"
+python -m pip install -e "./rag库/检索工程"
+python -m pip install -r "./web/backend/requirements.txt"
+cd web/frontend
+npm ci
 ```
 
-模型服务地址、密钥和本地运行库路径由环境变量或 `GUANCE_ENV_FILE` 指向的**私有本地配置文件**提供，不能提交到 Git。
+按 [Agent 配置模板](agent/.env.example) 设置模型和知识库环境，**不要提交真实密钥**。可通过 `GUANCE_ENV_FILE` 选择本机私有配置文件。
 
-后端在 `web/backend` 下运行 `python -m uvicorn app.main:app --host 127.0.0.1 --port 8000`；前端在 `web/frontend` 下执行 `npm ci`、`npm run dev`。参数说明及依赖条件以各模块 README 为准。
+## 启动
 
-## 测试和限制
+终端 1，进入 `web/backend`：
 
-GitHub Actions 对 Agent、RAG 检索契约、后端和前端进行离线检查。自动化通过不等于真实校内模型 + 完整训练集的业务验收；提交仓库未宣称已完成所有真实端到端题组。原始数据、训练集和赛事资料通过授权渠道单独管理。
+```powershell
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+终端 2，进入 `web/frontend`：
+
+```powershell
+npm run dev
+```
+
+浏览器打开 Vite 输出的本机页面。后端默认端口 8000；前端缺省连接 `http://127.0.0.1:8000`。
+
+## 导出
+
+研究结果下方的按钮支持 Word（保留研究结论、事实及出处）和 Excel（研究结果、核验事实、文献出处、结构化研究四类工作表）。导出文件仅在内存中生成并返回，不会写入仓库或后端磁盘。不导出模型密钥、工具日志或内部配置。
+
+## 使用边界
+
+**仅提交源码不等于内置研究数据。** 真实研究功能必须提供模型服务和恢复后的 RAG 库，缺失时无法产生可信政策研究结果。源代码构建成功也不代表所有真实训练集场景均已达标。
