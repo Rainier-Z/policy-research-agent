@@ -2058,3 +2058,12 @@ textarea:focus-visible {
     padding-top: 24px;
   }
 }
+
+/* Contextual result exports, intentionally outside the copied answer. */
+.result-export-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin:12px 0 4px; }
+.result-export-actions button { display:inline-flex; gap:6px; align-items:center; padding:7px 12px;
+  background:#fff; color:var(--ink); border:1px solid var(--border); border-radius:8px; cursor:pointer; font-size:12px; }
+.result-export-actions button:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+.result-export-actions button:disabled { opacity:.55; cursor:wait; }
+.result-export-actions [role="status"] { font-size:12px; color:#6f6865; }
+.result-export-error { font-size:12px; color:#a32828; }
