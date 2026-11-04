@@ -14,6 +14,7 @@ from guance_agent.kb import close_kb, warm_up
 from guance_agent.main import submit
 from guance_agent.research_planner import ResearchPlanner
 
+from .export_routes import router as export_router
 from .policy_routes import _catalog as get_policy_catalog
 from .policy_routes import router as policy_catalog_router
 from .preparation import (
@@ -88,6 +89,7 @@ def create_app(settings=None, env_file=None, preparation_service=None) -> FastAP
         preparation_service if preparation_service is not None else ResearchPreparationService()
     )
     application.include_router(policy_catalog_router)
+    application.include_router(export_router)
     application.add_middleware(
         CORSMiddleware,
         allow_origins=configured_origins,
