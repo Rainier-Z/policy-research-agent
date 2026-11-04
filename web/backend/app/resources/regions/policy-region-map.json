@@ -1,0 +1,2535 @@
+{
+  "algorithm_version": "policy-region-map-v1",
+  "entries": [
+    {
+      "planid": "10032",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "10079",
+      "region_code": "350700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10364",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "10444",
+      "region_code": "341882000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10510",
+      "region_code": "321200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1059",
+      "region_code": "420100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10610",
+      "region_code": "360704000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10645",
+      "region_code": "450600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10689",
+      "region_code": "520322000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10722",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "10884",
+      "region_code": "411400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "10908",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "10950",
+      "region_code": "620982000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1116",
+      "region_code": "131100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11174",
+      "region_code": "441521000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11455",
+      "region_code": "520123000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11551",
+      "region_code": "140600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11595",
+      "region_code": "370681000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1172",
+      "region_code": "330300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11729",
+      "region_code": "370116000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11782",
+      "region_code": "330824000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "11790",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "12119",
+      "region_code": "520423000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12291",
+      "region_code": "340881000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12321",
+      "region_code": "320981000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12484",
+      "region_code": "140000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12539",
+      "region_code": "511526000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12554",
+      "region_code": "370215000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12707",
+      "region_code": "210111000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "12915",
+      "region_code": "530000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13046",
+      "region_code": "620105000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13120",
+      "region_code": "520300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13138",
+      "region_code": "620503000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13380",
+      "region_code": "231000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13499",
+      "region_code": "361102000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "13745",
+      "region_code": "441403000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1394",
+      "region_code": "130129000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "14024",
+      "region_code": "350602000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "14249",
+      "region_code": "150103000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "143",
+      "region_code": "230126000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "14373",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "14384",
+      "region_code": "370202000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "14597",
+      "region_code": "450300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "14655",
+      "region_code": "230108000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1489",
+      "region_code": "220623000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15151",
+      "region_code": "430200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15226",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "15251",
+      "region_code": "340403000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15449",
+      "region_code": "341202000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15556",
+      "region_code": "371100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15576",
+      "region_code": "371482000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15592",
+      "region_code": "320925000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15831",
+      "region_code": "350300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15834",
+      "region_code": "330127000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15849",
+      "region_code": "450700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15862",
+      "region_code": "340506000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15879",
+      "region_code": "532500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "15896",
+      "region_code": "350304000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16111",
+      "region_code": "510400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16176",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "16228",
+      "region_code": "620982000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16279",
+      "region_code": "140729000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16297",
+      "region_code": "320282000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16638",
+      "region_code": "340281000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16666",
+      "region_code": "321300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "16668",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "1700",
+      "region_code": "230600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "17568",
+      "region_code": "210114000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "18052",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "18177",
+      "region_code": "320000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1819",
+      "region_code": "520100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "18307",
+      "region_code": "533100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1831",
+      "region_code": "370724000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "18365",
+      "region_code": "530000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1844",
+      "region_code": "440881000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "1850",
+      "region_code": "420525000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "18502",
+      "region_code": "530400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "18563",
+      "region_code": "360000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19168",
+      "region_code": "220200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19236",
+      "region_code": "341000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19251",
+      "region_code": "510800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19295",
+      "region_code": "510100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19446",
+      "region_code": "510500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19710",
+      "region_code": "410000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19934",
+      "region_code": "341100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "19965",
+      "region_code": "341200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20115",
+      "region_code": "371600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20464",
+      "region_code": "511700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20539",
+      "region_code": "420600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20699",
+      "region_code": "320500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20800",
+      "region_code": "320585000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20913",
+      "region_code": "410122000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "20962",
+      "region_code": "421300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21041",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "21086",
+      "region_code": "410221000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21487",
+      "region_code": "222400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21606",
+      "region_code": "220122000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21674",
+      "region_code": "341500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21790",
+      "region_code": "340700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21892",
+      "region_code": "341700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "21988",
+      "region_code": "632300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2210",
+      "region_code": "130000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22135",
+      "region_code": "620300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22194",
+      "region_code": "512000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22255",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "22293",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "22455",
+      "region_code": "360800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2250",
+      "region_code": "441881000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22510",
+      "region_code": "513200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22555",
+      "region_code": "620500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22917",
+      "region_code": "361100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22935",
+      "region_code": "510105000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "22984",
+      "region_code": "410900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23132",
+      "region_code": "632800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23198",
+      "region_code": "510112000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23247",
+      "region_code": "632200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23251",
+      "region_code": "632200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23323",
+      "region_code": "370400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23334",
+      "region_code": "510114000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23399",
+      "region_code": "510115000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "234",
+      "region_code": "350000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23467",
+      "region_code": "370600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23610",
+      "region_code": "370700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23728",
+      "region_code": "331100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23893",
+      "region_code": "420111000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "23967",
+      "region_code": "420117000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "24037",
+      "region_code": "330000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2414",
+      "region_code": "431000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "24177",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "24294",
+      "region_code": "610100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "24316",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "24378",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "24385",
+      "region_code": "620423000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "24422",
+      "region_code": "340181000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "24837",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "24878",
+      "region_code": "410527000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25013",
+      "region_code": "533300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25028",
+      "region_code": "610104000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25242",
+      "region_code": "410922000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25369",
+      "region_code": "420325000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25455",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "25574",
+      "region_code": "420527000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2561",
+      "region_code": "130900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25743",
+      "region_code": "331000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25805",
+      "region_code": "321200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25846",
+      "region_code": "610500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "25847",
+      "region_code": "610500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26042",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "26147",
+      "region_code": "110000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26175",
+      "region_code": "110000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26237",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "2626",
+      "region_code": "370000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26288",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "26395",
+      "region_code": "140621000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26618",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "26871",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "26876",
+      "region_code": "341003000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "26944",
+      "region_code": "620825000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "27112",
+      "region_code": "530112000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "27234",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "27249",
+      "region_code": "530114000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "27290",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "27389",
+      "region_code": "621022000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2751",
+      "region_code": "130123000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "27687",
+      "region_code": "360323000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "27776",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "2786",
+      "region_code": "220800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28002",
+      "region_code": "510603000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28107",
+      "region_code": "420882000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28354",
+      "region_code": "510703000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28456",
+      "region_code": "510704000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "2859",
+      "region_code": "621027000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28657",
+      "region_code": "421002000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28933",
+      "region_code": "320506000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "28973",
+      "region_code": "320509000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29140",
+      "region_code": "522700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29184",
+      "region_code": "360483000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29200",
+      "region_code": "360603000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29326",
+      "region_code": "522728000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29507",
+      "region_code": "522623000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29541",
+      "region_code": "522628000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29544",
+      "region_code": "522628000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29549",
+      "region_code": "522629000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29678",
+      "region_code": "230000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29728",
+      "region_code": "621102000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "29778",
+      "region_code": "430100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "300",
+      "region_code": "640100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30245",
+      "region_code": "210211000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30374",
+      "region_code": "210000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30389",
+      "region_code": "210000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30463",
+      "region_code": "211300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30505",
+      "region_code": "210300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "30740",
+      "region_code": "140400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31065",
+      "region_code": "140729000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31229",
+      "region_code": "140900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31237",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "31341",
+      "region_code": "360704000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31392",
+      "region_code": "360730000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31471",
+      "region_code": "360783000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31581",
+      "region_code": "422827000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31629",
+      "region_code": "421221000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "31972",
+      "region_code": "141034000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32004",
+      "region_code": "350000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32011",
+      "region_code": "350000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32164",
+      "region_code": "610702000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32339",
+      "region_code": "331082000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32368",
+      "region_code": "330326000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3248",
+      "region_code": "140423000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32524",
+      "region_code": "350121000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32697",
+      "region_code": "530922000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3275",
+      "region_code": "360000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32968",
+      "region_code": "150600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "32995",
+      "region_code": "150100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33048",
+      "region_code": "150300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33096",
+      "region_code": "430103000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33137",
+      "region_code": "341721000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33236",
+      "region_code": "341503000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33439",
+      "region_code": "360981000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33462",
+      "region_code": "361002000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33608",
+      "region_code": "210400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3390",
+      "region_code": "350700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "33992",
+      "region_code": "450000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34048",
+      "region_code": "441200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34054",
+      "region_code": "441200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34428",
+      "region_code": "320830000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34457",
+      "region_code": "130404000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34465",
+      "region_code": "370212000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34506",
+      "region_code": "130423000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34605",
+      "region_code": "130400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34650",
+      "region_code": "350700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34683",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "34734",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "34741",
+      "region_code": "370303000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34754",
+      "region_code": "411700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34854",
+      "region_code": "640105000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34891",
+      "region_code": "640121000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34952",
+      "region_code": "370403000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "34985",
+      "region_code": "640221000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35067",
+      "region_code": "640324000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35133",
+      "region_code": "411600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35151",
+      "region_code": "640422000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35160",
+      "region_code": "370522000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35247",
+      "region_code": "411500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35459",
+      "region_code": "230500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35473",
+      "region_code": "230500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35486",
+      "region_code": "370682000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35657",
+      "region_code": "350200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35684",
+      "region_code": "411325000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35759",
+      "region_code": "371526000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35890",
+      "region_code": "371625000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "35895",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "36004",
+      "region_code": "520400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36017",
+      "region_code": "131100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36132",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "3621",
+      "region_code": "130400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36551",
+      "region_code": "371322000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3658",
+      "region_code": "321300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36656",
+      "region_code": "371703000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36767",
+      "region_code": "130500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36849",
+      "region_code": "130523000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "36924",
+      "region_code": "130531000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37451",
+      "region_code": "371082000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37545",
+      "region_code": "532624000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37598",
+      "region_code": "130682000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37850",
+      "region_code": "330503000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37878",
+      "region_code": "330502000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37913",
+      "region_code": "445200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "37982",
+      "region_code": "330603000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38053",
+      "region_code": "330783000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38126",
+      "region_code": "230700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38130",
+      "region_code": "540227000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38282",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "38366",
+      "region_code": "520500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38501",
+      "region_code": "210800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38520",
+      "region_code": "210804000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3860",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "38897",
+      "region_code": "350503000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38915",
+      "region_code": "652900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "38922",
+      "region_code": "652902000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3935",
+      "region_code": "120000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39411",
+      "region_code": "532302000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39416",
+      "region_code": "532302000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39504",
+      "region_code": "510921000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39667",
+      "region_code": "451225000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39705",
+      "region_code": "451121000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39706",
+      "region_code": "451100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "3987",
+      "region_code": "652325000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "39919",
+      "region_code": "330703000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40042",
+      "region_code": "330304000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40081",
+      "region_code": "330305000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40165",
+      "region_code": "450224000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "402",
+      "region_code": "511300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40322",
+      "region_code": "230224000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40368",
+      "region_code": "430802000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40389",
+      "region_code": "610400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40472",
+      "region_code": "433125000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40473",
+      "region_code": "321203000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40509",
+      "region_code": "321204000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "40804",
+      "region_code": "520115000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41134",
+      "region_code": "610581000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41185",
+      "region_code": "230402000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41195",
+      "region_code": "230405000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41529",
+      "region_code": "150784000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41555",
+      "region_code": "150525000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41599",
+      "region_code": "152201000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41628",
+      "region_code": "511302000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41670",
+      "region_code": "650203000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41871",
+      "region_code": "411500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "41966",
+      "region_code": "411729000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42138",
+      "region_code": "210100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42213",
+      "region_code": "210103000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42277",
+      "region_code": "211282000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42294",
+      "region_code": "211204000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42356",
+      "region_code": "211223000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42358",
+      "region_code": "211223000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42543",
+      "region_code": "430406000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42582",
+      "region_code": "511424000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42605",
+      "region_code": "440105000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42690",
+      "region_code": "440113000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "42963",
+      "region_code": "511425000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43073",
+      "region_code": "610431000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43124",
+      "region_code": "610481000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43231",
+      "region_code": "440305000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43276",
+      "region_code": "440307000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43281",
+      "region_code": "440308000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43307",
+      "region_code": "440310000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "43582",
+      "region_code": "511523000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4389",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "43959",
+      "region_code": "440981000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "44445",
+      "region_code": "441581000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4454",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "4457",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "44610",
+      "region_code": "441821000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4462",
+      "region_code": "430121000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4472",
+      "region_code": "510000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "44738",
+      "region_code": "511722000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45014",
+      "region_code": "511825000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45100",
+      "region_code": "510116000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45254",
+      "region_code": "210124000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4536",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "45441",
+      "region_code": "350000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45453",
+      "region_code": "360113000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45715",
+      "region_code": "370000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45816",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "45835",
+      "region_code": "210000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45863",
+      "region_code": "350100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "45896",
+      "region_code": "500000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46054",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "46218",
+      "region_code": "330000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46482",
+      "region_code": "431002000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46543",
+      "region_code": "130000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46732",
+      "region_code": "620000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46800",
+      "region_code": "370000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "46971",
+      "region_code": "320100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47013",
+      "region_code": "321300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47057",
+      "region_code": "320105000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47152",
+      "region_code": "321302000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47170",
+      "region_code": "321322000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47286",
+      "region_code": "530000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47673",
+      "region_code": "411400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4771",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "47840",
+      "region_code": "420804000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "47866",
+      "region_code": "130100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48271",
+      "region_code": "230623000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48301",
+      "region_code": "620100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4840",
+      "region_code": "140623000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48470",
+      "region_code": "430211000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48488",
+      "region_code": "440700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48555",
+      "region_code": "440000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48708",
+      "region_code": "350502000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "48787",
+      "region_code": "330100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49029",
+      "region_code": "210304000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49035",
+      "region_code": "210304000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4911",
+      "region_code": "620400000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49151",
+      "region_code": "320200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49183",
+      "region_code": "320205000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "492",
+      "region_code": "320402000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49223",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "49262",
+      "region_code": "610000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4947",
+      "region_code": "620900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49550",
+      "region_code": "350525000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "4966",
+      "region_code": "621124000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49893",
+      "region_code": "370100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "49956",
+      "region_code": "140700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50143",
+      "region_code": "361003000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50209",
+      "region_code": "130129000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50215",
+      "region_code": "130123000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50357",
+      "region_code": "210381000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50430",
+      "region_code": "533100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50475",
+      "region_code": "533300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50615",
+      "region_code": "210500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50756",
+      "region_code": "330100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50822",
+      "region_code": "330100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50861",
+      "region_code": "330200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "50935",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "51050",
+      "region_code": "231182000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5116",
+      "region_code": "610722000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51429",
+      "region_code": "610900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51479",
+      "region_code": "611000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51492",
+      "region_code": "610800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51505",
+      "region_code": "610000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51506",
+      "region_code": "610000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51507",
+      "region_code": "610000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51509",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "51696",
+      "region_code": "350700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "51839",
+      "region_code": "440300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52109",
+      "region_code": "431300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52191",
+      "region_code": "450100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52237",
+      "region_code": "131082000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52316",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "52510",
+      "region_code": "420106000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5254",
+      "region_code": "520603000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52612",
+      "region_code": "450224000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52776",
+      "region_code": "210882000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5279",
+      "region_code": "522723000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "52845",
+      "region_code": "621200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5301",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "53073",
+      "region_code": "623000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53084",
+      "region_code": "320800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5327",
+      "region_code": "150000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53306",
+      "region_code": "211004000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5333",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "5340",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "53586",
+      "region_code": "211200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53735",
+      "region_code": "211200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53766",
+      "region_code": "320900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53803",
+      "region_code": "320900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53816",
+      "region_code": "320900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53821",
+      "region_code": "320900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53890",
+      "region_code": "511100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "53985",
+      "region_code": "350921000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "54014",
+      "region_code": "350981000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "54188",
+      "region_code": "510000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "54589",
+      "region_code": "140000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "54810",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "54905",
+      "region_code": "370126000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "54916",
+      "region_code": "410621000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55040",
+      "region_code": "330600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55059",
+      "region_code": "410622000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5510",
+      "region_code": "150700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55152",
+      "region_code": "211382000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55234",
+      "region_code": "230421000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55586",
+      "region_code": "370203000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55704",
+      "region_code": "320583000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55772",
+      "region_code": "451024000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55869",
+      "region_code": "321200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "55873",
+      "region_code": "321200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5605",
+      "region_code": "150426000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56094",
+      "region_code": "620403000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56649",
+      "region_code": "450300000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56683",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "56827",
+      "region_code": "450321000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56875",
+      "region_code": "320682000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56886",
+      "region_code": "320302000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "56917",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "56928",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "56963",
+      "region_code": "450328000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "57",
+      "region_code": null,
+      "region_status": "not_applicable"
+    },
+    {
+      "planid": "57120",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "57141",
+      "region_code": "320614000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "57161",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "57336",
+      "region_code": "320585000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "57338",
+      "region_code": "320585000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "57342",
+      "region_code": "320585000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5922",
+      "region_code": "210600000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5967",
+      "region_code": "220000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "5987",
+      "region_code": "220000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "620",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "6211",
+      "region_code": "230205000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6343",
+      "region_code": "610800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6381",
+      "region_code": "230000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "641",
+      "region_code": "210100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6441",
+      "region_code": "420900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6576",
+      "region_code": "370100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6624",
+      "region_code": "320585000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6878",
+      "region_code": "520113000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "6969",
+      "region_code": "350500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7045",
+      "region_code": "210881000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7127",
+      "region_code": "341723000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7228",
+      "region_code": "230111000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7280",
+      "region_code": "231124000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "738",
+      "region_code": "430500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7454",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "7562",
+      "region_code": "350623000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7775",
+      "region_code": "450304000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7816",
+      "region_code": "360500000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "783",
+      "region_code": "130900000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "7963",
+      "region_code": "320583000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8143",
+      "region_code": "620522000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8267",
+      "region_code": "320000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8453",
+      "region_code": "440203000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "86",
+      "region_code": "330000000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8687",
+      "region_code": "330200000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8726",
+      "region_code": "360426000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8763",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "8995",
+      "region_code": "421002000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "8996",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "9163",
+      "region_code": "361030000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9341",
+      "region_code": "511700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9450",
+      "region_code": "330800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9458",
+      "region_code": "330102000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9519",
+      "region_code": "620800000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "965",
+      "region_code": "430700000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9684",
+      "region_code": "445100000000",
+      "region_status": "mapped"
+    },
+    {
+      "planid": "9798",
+      "region_code": null,
+      "region_status": "unclassified"
+    },
+    {
+      "planid": "9888",
+      "region_code": "510521000000",
+      "region_status": "mapped"
+    }
+  ]
+}
