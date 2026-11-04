@@ -1,0 +1,9 @@
+# Office 临时锁文件
+~$*
+# 系统/编辑器垃圾
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 本地归档、运行数据和恢复备份不上传 GitHub
+/GitHub排除/

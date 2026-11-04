@@ -1,0 +1,489 @@
+import { useCallback, useMemo, useRef, useState } from "react";
+
+import { ApiError, isRealMode, researchClient, validatePreparationResponse } from "../api/client";
+import type { DemoScenario } from "../data/demo";
+import { createAdvancedDraft, type AdvancedDraft, type Conversation, type ConversationMessage } from "../conversationTypes";
+import { summarizeConversationTitle } from "../conversationTitle";
+import type {
+  PreparedRequest,
+  ResearchPreparationRequest,
+  ResearchRequest,
+  TaskType,
+} from "../types";
+
+interface OperationToken {
+  id: number;
+  generation: number;
+}
+
+type LastOperation =
+  | { kind: "prepare"; request: ResearchPreparationRequest; scenario?: DemoScenario; failed: boolean; conflict: boolean }
+  | { kind: "execution"; request: ResearchRequest; scenario?: DemoScenario; failed: boolean };
+
+let nextConversationId = 1;
+let nextMessageId = 1;
+let nextOperationId = 1;
+
+function newId(prefix: string): string {
+  if (prefix === "conversation") return `${prefix}-${nextConversationId++}`;
+  if (prefix === "operation") return `${prefix}-${nextOperationId++}`;
+  return `${prefix}-${nextMessageId++}`;
+}
+
+/** Random per-browser-conversation Agent session. Never use enumerable
+ * conversation-1 / conversation-2 identifiers as server session keys. */
+function freshAgentSessionId(): string {
+  const cryptoAPI = globalThis.crypto;
+  if (cryptoAPI?.randomUUID) return `guance-${cryptoAPI.randomUUID()}`;
+  if (!cryptoAPI?.getRandomValues) throw new Error("Secure session ID generation unavailable");
+  const bytes = cryptoAPI.getRandomValues(new Uint8Array(16));
+  return `guance-${Array.from(bytes, byte => byte.toString(16).padStart(2, "0")).join("")}`;
+}
+
+function createConversation(mode: TaskType = "qa"): Conversation {
+  return {
+    id: newId("conversation"),
+    title: "新对话",
+    mode,
+    messages: [],
+    busy: "idle",
+    preparation: null,
+    advancedDraft: createAdvancedDraft(),
+  };
+}
+
+function message(kind: ConversationMessage["kind"], fields: Record<string, unknown>): ConversationMessage {
+  return { id: newId("message"), kind, ...fields } as ConversationMessage;
+}
+
+function apiError(error: unknown, operation: "prepare" | "execution"): { code: string; text: string; conflict: boolean } {
+  if (error instanceof ApiError) {
+    if (operation === "prepare" && error.status === 409) {
+      return { code: "PREPARATION_CONFLICT", text: "研究准备状态已失效或冲突。请显式重新开始，并重新输入研究请求。", conflict: true };
+    }
+    if (error.status === 404 && operation === "prepare") {
+      return { code: "PREPARATION_UNAVAILABLE", text: "研究准备服务尚未部署。", conflict: false };
+    }
+    if (error.status === 422 || error.status === 400) {
+      return { code: "INVALID_PARAMETERS", text: error.message || "请求参数无效，请检查后重试。", conflict: false };
+    }
+    if (error.kind === "timeout") return { code: "TIMEOUT", text: error.message, conflict: false };
+    if (error.kind === "network") return { code: "NETWORK", text: error.message, conflict: false };
+    if (error.kind === "malformed") return { code: "RESPONSE_FORMAT", text: error.message, conflict: false };
+    return { code: `HTTP_${error.status ?? "ERROR"}`, text: error.message, conflict: false };
+  }
+  if (error instanceof Error && error.name === "AbortError") {
+    return { code: "CANCELLED", text: "请求已取消。", conflict: false };
+  }
+  if (error instanceof Error) return { code: "NETWORK", text: error.message, conflict: false };
+  return { code: "UNKNOWN", text: "发生未知错误。", conflict: false };
+}
+
+function isAdvancedMode(mode: TaskType): mode is Extract<TaskType, "extract" | "compare" | "compare_plans"> {
+  return mode === "extract" || mode === "compare" || mode === "compare_plans";
+}
+
+export function useConversations() {
+  const initial = useRef<Conversation | null>(null);
+  if (!initial.current) initial.current = createConversation();
+  const [sessions, setSessions] = useState<Conversation[]>([initial.current]);
+  const [activeId, setActiveId] = useState(initial.current.id);
+  const sessionsRef = useRef(sessions);
+  sessionsRef.current = sessions;
+  const activeIdRef = useRef(activeId);
+  activeIdRef.current = activeId;
+  const generations = useRef(new Map<string, number>());
+  const agentSessionIds = useRef(new Map<string, string>());
+  const operations = useRef(new Map<string, number>());
+  const lastOperations = useRef(new Map<string, LastOperation>());
+  // Keep the exact execution request associated with each assistant answer.
+  // These maps are session-local, like the conversation history itself.
+  const resultRequests = useRef(new Map<string, { request: ResearchRequest; scenario?: DemoScenario }>());
+  const advancedRequests = useRef(new Map<string, { request: ResearchRequest; scenario?: DemoScenario }>());
+  const userModes = useRef(new Map<string, TaskType>());
+
+  const updateSessions = useCallback((updater: (current: Conversation[]) => Conversation[]) => {
+    const next = updater(sessionsRef.current);
+    sessionsRef.current = next;
+    setSessions(next);
+  }, []);
+
+  const updateConversation = useCallback((id: string, updater: (conversation: Conversation) => Conversation) => {
+    updateSessions((current) => current.map((conversation) => conversation.id === id ? updater(conversation) : conversation));
+  }, [updateSessions]);
+
+  const appendMessage = useCallback((id: string, item: ConversationMessage) => {
+    if (item.kind === "user") {
+      const current = sessionsRef.current.find((conversation) => conversation.id === id);
+      if (current) userModes.current.set(item.id, current.mode);
+    }
+    updateConversation(id, (conversation) => ({
+      ...conversation,
+      title: item.kind === "user" && !conversation.messages.some((entry) => entry.kind === "user")
+        ? summarizeConversationTitle(item.text, conversation.mode)
+        : conversation.title,
+      messages: [...conversation.messages, item],
+    }));
+  }, [updateConversation]);
+
+  const beginOperation = useCallback((id: string): OperationToken | null => {
+    if (operations.current.has(id)) return null;
+    const operationId = Number(newId("operation").split("-").at(-1));
+    const generation = generations.current.get(id) ?? 0;
+    operations.current.set(id, operationId);
+    return { id: operationId, generation };
+  }, []);
+
+  const isCurrent = useCallback((conversationId: string, token: OperationToken) => (
+    operations.current.get(conversationId) === token.id
+      && (generations.current.get(conversationId) ?? 0) === token.generation
+  ), []);
+
+  const finishOperation = useCallback((conversationId: string, token: OperationToken) => {
+    if (operations.current.get(conversationId) === token.id) operations.current.delete(conversationId);
+  }, []);
+
+  const setBusy = useCallback((id: string, busy: Conversation["busy"]) => {
+    updateConversation(id, (conversation) => ({ ...conversation, busy }));
+  }, [updateConversation]);
+
+  const execute = useCallback(async (
+    conversationId: string,
+    request: ResearchRequest,
+    scenario: DemoScenario | undefined,
+    token: OperationToken,
+  ) => {
+    if (!isCurrent(conversationId, token)) return;
+    setBusy(conversationId, "running");
+    // The trusted backend stores conversational context by session_id.
+    // Keep one unguessable ID per UI conversation, including QA follow-ups.
+    // This is not a substitute for user authentication in public deployments.
+    let submitted = request;
+    try {
+      if (isRealMode) {
+        let sid = agentSessionIds.current.get(conversationId);
+        if (!sid) {
+          sid = freshAgentSessionId();
+          agentSessionIds.current.set(conversationId, sid);
+        }
+        submitted = { ...request, session_id: sid };
+      }
+      lastOperations.current.set(conversationId, { kind: "execution", request: submitted, scenario, failed: false });
+      const result = await researchClient.submit(submitted, scenario);
+      if (!isCurrent(conversationId, token)) return;
+      const answer = message("result", { result });
+      resultRequests.current.set(answer.id, { request: submitted, scenario });
+      appendMessage(conversationId, answer);
+      // A failed RunResult already carries its error and status. Rendering
+      // another "error" message would show the same failure twice.
+      // Transport/prepare failures (without a RunResult) still emit one error.
+      lastOperations.current.set(conversationId, {
+        kind: "execution",
+        request: submitted,
+        scenario,
+        failed: result.status === "failed" || result.status === "limit_reached",
+      });
+      setBusy(conversationId, "idle");
+    } catch (error) {
+      if (!isCurrent(conversationId, token)) return;
+      const mapped = apiError(error, "execution");
+      appendMessage(conversationId, message("error", { code: mapped.code, text: mapped.text }));
+      lastOperations.current.set(conversationId, { kind: "execution", request: submitted, scenario, failed: true });
+      setBusy(conversationId, "idle");
+    }
+  }, [appendMessage, isCurrent, setBusy]);
+
+  const prepareAndMaybeExecute = useCallback(async (
+    conversationId: string,
+    mode: TaskType,
+    request: ResearchPreparationRequest,
+    scenario: DemoScenario | undefined,
+    token: OperationToken,
+  ) => {
+    if (!isCurrent(conversationId, token)) return;
+    setBusy(conversationId, "preparing");
+    lastOperations.current.set(conversationId, { kind: "prepare", request, scenario, failed: false, conflict: false });
+    try {
+      const rawResponse = await researchClient.prepare(request);
+      if (!isCurrent(conversationId, token)) return;
+      const response = validatePreparationResponse(rawResponse, mode);
+      updateConversation(conversationId, (conversation) => ({ ...conversation, preparation: response }));
+      appendMessage(conversationId, message("preparation", { response }));
+      if (response.status === "blocked") {
+        appendMessage(conversationId, message("error", {
+          code: isAdvancedMode(mode) ? "UNSUPPORTED_MODE" : "PREPARATION_BLOCKED",
+          text: response.message,
+        }));
+        setBusy(conversationId, "idle");
+        return;
+      }
+      if (response.status !== "ready") {
+        lastOperations.current.set(conversationId, { kind: "prepare", request, scenario, failed: false, conflict: false });
+        setBusy(conversationId, "idle");
+        return;
+      }
+      const preparedRequest = response.request as PreparedRequest;
+      const executionRequest: ResearchRequest = preparedRequest;
+      lastOperations.current.set(conversationId, { kind: "execution", request: executionRequest, scenario, failed: false });
+      await execute(conversationId, executionRequest, scenario, token);
+    } catch (error) {
+      if (!isCurrent(conversationId, token)) return;
+      const mapped = apiError(error, "prepare");
+      appendMessage(conversationId, message("error", { code: mapped.code, text: mapped.text }));
+      lastOperations.current.set(conversationId, { kind: "prepare", request, scenario, failed: true, conflict: mapped.conflict });
+      setBusy(conversationId, "idle");
+    }
+  }, [appendMessage, execute, isCurrent, setBusy, updateConversation]);
+
+  const send = useCallback(async (text: string, scenario?: DemoScenario) => {
+    const conversationId = activeIdRef.current;
+    const conversation = sessionsRef.current.find((item) => item.id === conversationId);
+    if (!conversation || !text.trim()) return;
+    if (operations.current.has(conversationId)) return;
+    if (isAdvancedMode(conversation.mode)) {
+      // The web client must not demand planids before the Research Agent can
+      // investigate the request. Discovery and any evidence limits belong to
+      // the trusted backend Planner / Runtime, not a frontend form gate.
+      const token = beginOperation(conversationId);
+      if (!token) return;
+      appendMessage(conversationId, message("user", { text }));
+      try {
+        await execute(conversationId, {
+          task_type: conversation.mode, question: text,
+        }, scenario, token);
+      } finally {
+        finishOperation(conversationId, token);
+      }
+      return;
+    }
+    if (conversation.messages.at(-1)?.kind === "error"
+        && (conversation.messages.at(-1) as Extract<ConversationMessage, {kind: "error"}>).code === "PREPARATION_CONFLICT") return;
+    const token = beginOperation(conversationId);
+    if (!token) return;
+    appendMessage(conversationId, message("user", { text }));
+    const priorPreparation = conversation.preparation;
+    const request: ResearchPreparationRequest = {
+      mode: conversation.mode,
+      message: text,
+      autonomous: true,
+      ...(priorPreparation?.mode === conversation.mode
+        ? { state: { state_id: priorPreparation.state.state_id, revision: priorPreparation.state.revision } }
+        : {}),
+    };
+    try {
+      await prepareAndMaybeExecute(conversationId, conversation.mode, request, scenario, token);
+    } finally {
+      finishOperation(conversationId, token);
+    }
+  }, [appendMessage, beginOperation, execute, finishOperation, isCurrent, prepareAndMaybeExecute, setBusy, updateConversation]);
+
+  const updateAdvancedDraft = useCallback((patch: Partial<AdvancedDraft>) => {
+    const conversationId = activeIdRef.current;
+    updateConversation(conversationId, (conversation) => ({
+      ...conversation,
+      advancedDraft: { ...conversation.advancedDraft, ...patch },
+    }));
+  }, [updateConversation]);
+
+  const openAdvanced = useCallback(() => {
+    const conversationId = activeIdRef.current;
+    updateConversation(conversationId, (conversation) => ({
+      ...conversation,
+      advancedDraft: {
+        ...conversation.advancedDraft,
+        open: true,
+        focusVersion: conversation.advancedDraft.focusVersion + 1,
+      },
+    }));
+  }, [updateConversation]);
+
+  const runAdvanced = useCallback(async (request: ResearchRequest, scenario?: DemoScenario) => {
+    const conversationId = activeIdRef.current;
+    const conversation = sessionsRef.current.find((item) => item.id === conversationId);
+    if (!conversation) return;
+    const token = beginOperation(conversationId);
+    if (!token) return;
+    const userTurn = message("user", { text: request.question });
+    advancedRequests.current.set(userTurn.id, { request, scenario });
+    appendMessage(conversationId, userTurn);
+    if (!isAdvancedMode(request.task_type) || request.task_type !== conversation.mode) {
+      appendMessage(conversationId, message("error", {
+        code: "UNSUPPORTED_MODE",
+        text: "请先选择对应的提取或比较模式，再提交高级请求。",
+      }));
+      finishOperation(conversationId, token);
+      return;
+    }
+    try {
+      await execute(conversationId, request, scenario, token);
+    } finally {
+      finishOperation(conversationId, token);
+    }
+  }, [appendMessage, beginOperation, execute, finishOperation]);
+
+  // Rewind a turn rather than mutating a rendered bubble. Any later turns depend
+  // on the old answer and must be removed before the new request is submitted.
+  const rewindToUser = useCallback((conversation: Conversation, userIndex: number) => {
+    const turn = conversation.messages[userIndex];
+    if (turn?.kind !== "user") return;
+    const mode = userModes.current.get(turn.id) ?? conversation.mode;
+    const retained = conversation.messages.slice(0, userIndex);
+    lastOperations.current.delete(conversation.id);
+    // The server has no rewind primitive. A branch-edit must start a fresh
+    // trusted session and preparation token, never reuse invalid future state.
+    agentSessionIds.current.delete(conversation.id);
+    updateConversation(conversation.id, (current) => ({
+      ...current,
+      title: retained.some((item) => item.kind === "user") ? current.title : "新对话",
+      mode,
+      messages: retained,
+      preparation: null,
+      busy: "idle",
+      advancedDraft: createAdvancedDraft(),
+    }));
+  }, [updateConversation]);
+
+  const editAndResend = useCallback(async (messageId: string, editedText: string, scenario?: DemoScenario) => {
+    const text = editedText.trim();
+    const conversation = sessionsRef.current.find((item) => item.id === activeIdRef.current);
+    if (!text || !conversation || conversation.busy !== "idle" || operations.current.has(conversation.id)) return;
+    const index = conversation.messages.findIndex((item) => item.id === messageId && item.kind === "user");
+    if (index < 0) return;
+    const original = conversation.messages[index];
+    if (original.kind !== "user") return;
+    const advanced = advancedRequests.current.get(original.id);
+    rewindToUser(conversation, index);
+    if (advanced) await runAdvanced({ ...advanced.request, question: text }, scenario ?? advanced.scenario);
+    else await send(text, scenario);
+  }, [rewindToUser, runAdvanced, send]);
+
+  const regenerate = useCallback(async (messageId: string, scenario?: DemoScenario) => {
+    const conversation = sessionsRef.current.find((item) => item.id === activeIdRef.current);
+    if (!conversation || conversation.busy !== "idle" || operations.current.has(conversation.id)) return;
+    const index = conversation.messages.findIndex((item) => item.id === messageId);
+    if (index < 0) return;
+    const target = conversation.messages[index];
+    if (target.kind === "user" || target.kind === "execution") return;
+    const userIndex = conversation.messages.slice(0, index).map((item) => item.kind).lastIndexOf("user");
+    if (userIndex < 0) return;
+
+    // A completed answer can reuse the precisely prepared request, avoiding
+    // unnecessary preparation and preserving advanced selection parameters.
+    const saved = target.kind === "result" ? resultRequests.current.get(target.id) : undefined;
+    if (saved) {
+      const retained = conversation.messages.slice(0, index);
+      lastOperations.current.delete(conversation.id);
+      agentSessionIds.current.delete(conversation.id);
+      updateConversation(conversation.id, (current) => ({
+        ...current, messages: retained, busy: "idle",
+        preparation: (() => {
+          const prior = retained.filter((item) => item.kind === "preparation").at(-1);
+          return prior?.kind === "preparation" ? prior.response : null;
+        })(),
+        advancedDraft: createAdvancedDraft(),
+      }));
+      const token = beginOperation(conversation.id);
+      if (!token) return;
+      try {
+        await execute(conversation.id, saved.request, scenario ?? saved.scenario, token);
+      } finally {
+        finishOperation(conversation.id, token);
+      }
+      return;
+    }
+
+    // Clarifications, guidance and errors need the original user input replayed.
+    const original = conversation.messages[userIndex];
+    if (original.kind !== "user") return;
+    const advanced = advancedRequests.current.get(original.id);
+    rewindToUser(conversation, userIndex);
+    if (advanced) await runAdvanced(advanced.request, scenario ?? advanced.scenario);
+    else await send(original.text, scenario);
+  }, [beginOperation, execute, finishOperation, rewindToUser, runAdvanced, send, updateConversation]);
+
+  const retry = useCallback(async () => {
+    const conversationId = activeIdRef.current;
+    const operation = lastOperations.current.get(conversationId);
+    if (!operation?.failed || (operation.kind === "prepare" && operation.conflict)) return;
+    const token = beginOperation(conversationId);
+    if (!token) return;
+    try {
+      if (operation.kind === "execution") {
+        await execute(conversationId, operation.request, operation.scenario, token);
+      } else {
+        const conversation = sessionsRef.current.find((item) => item.id === conversationId);
+        if (conversation) await prepareAndMaybeExecute(conversationId, conversation.mode, operation.request, operation.scenario, token);
+      }
+    } finally {
+      finishOperation(conversationId, token);
+    }
+  }, [beginOperation, execute, finishOperation, prepareAndMaybeExecute]);
+
+  const restartPreparation = useCallback(() => {
+    const conversationId = activeIdRef.current;
+    const token = generations.current.get(conversationId) ?? 0;
+    generations.current.set(conversationId, token + 1);
+    operations.current.delete(conversationId);
+    lastOperations.current.delete(conversationId);
+    agentSessionIds.current.delete(conversationId);
+    updateConversation(conversationId, (conversation) => ({
+      ...conversation,
+      preparation: null,
+      busy: "idle",
+      messages: [...conversation.messages, message("error", {
+        code: "PREPARATION_RESTART",
+        text: "已清除失效的准备状态。请重新输入研究请求以开始新的准备。",
+      })],
+    }));
+  }, [updateConversation]);
+
+  const selectConversation = useCallback((id: string) => {
+    if (!sessionsRef.current.some((conversation) => conversation.id === id)) return;
+    activeIdRef.current = id;
+    setActiveId(id);
+  }, []);
+
+  const newConversation = useCallback((mode: TaskType = "qa") => {
+    const conversation = createConversation(mode);
+    updateSessions((current) => [conversation, ...current]);
+    activeIdRef.current = conversation.id;
+    setActiveId(conversation.id);
+    return conversation.id;
+  }, [updateSessions]);
+
+  const setMode = useCallback((mode: TaskType) => {
+    const conversationId = activeIdRef.current;
+    const conversation = sessionsRef.current.find((item) => item.id === conversationId);
+    if (!conversation || conversation.mode === mode) return;
+    generations.current.set(conversationId, (generations.current.get(conversationId) ?? 0) + 1);
+    operations.current.delete(conversationId);
+    lastOperations.current.delete(conversationId);
+    agentSessionIds.current.delete(conversationId);
+    updateConversation(conversationId, (conversation) => ({
+      ...conversation,
+      mode,
+      preparation: null,
+      busy: "idle",
+      advancedDraft: createAdvancedDraft(),
+    }));
+  }, [updateConversation]);
+
+  const active = useMemo(() => sessions.find((conversation) => conversation.id === activeId) ?? null, [activeId, sessions]);
+
+  return {
+    sessions,
+    activeId,
+    active,
+    selectConversation,
+    newConversation,
+    setMode,
+    send,
+    runAdvanced,
+    updateAdvancedDraft,
+    openAdvanced,
+    retry,
+    regenerate,
+    editAndResend,
+    restartPreparation,
+  };
+}
