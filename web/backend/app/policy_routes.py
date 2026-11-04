@@ -51,8 +51,27 @@ def _reject_unknown_query(request: Request, allowed: set[str]) -> None:
 
 
 def _resource_dir():
-    value = os.environ.get("GUANCE_POLICY_REGIONS_DIR")
-    return value or None
+    """Find the reviewed region bundle, never generate substitute region codes.
+
+    A valid explicit configuration wins.  If an old startup script points to
+    the wrong path but the checked-in/extracted resource directory actually
+    exists, use it rather than returning 503. The loaders still verify SHA and
+    mapping generation/revision.
+    """
+    from pathlib import Path
+
+    names = ("mainland-province-prefecture-county.json", "manifest.json",
+             "policy-region-map.json", "policy-region-review.json")
+    configured = os.environ.get("GUANCE_POLICY_REGIONS_DIR", "").strip()
+    bundled = Path(__file__).resolve().parent / "resources" / "regions"
+    if configured:
+        external = Path(configured)
+        if all((external / name).is_file() for name in names):
+            return str(external)
+        if all((bundled / name).is_file() for name in names):
+            return str(bundled)
+        return str(external)
+    return str(bundled)
 
 
 async def _regions(request: Request) -> dict:

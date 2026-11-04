@@ -30,3 +30,25 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 导出端点仅接收页面当前可见的研究结果字段；输出由 python-docx / XlsxWriter **在内存中**生成。仅已完成的研究允许正式导出；证据不足会在文件中提示。服务器不保留导出文件。
 
 行政区划与政策分类使用已配置的外部或运行时数据；缺少相关映射时部分维度筛选可能不可用。原始语料、媒体及 RAG 索引须由使用者自行配置，不能把已发布索引等同于源码包的一部分。
+
+## 地区筛选资源（Windows Server）
+
+地区资源与政策语料一样，作为**运行时外部资源**提供，不放入源码仓库。需要使用已审核且与当前 RAG 发布批次匹配的四个文件：
+
+- `mainland-province-prefecture-county.json`
+- `manifest.json`
+- `policy-region-map.json`
+- `policy-region-review.json`
+
+如果四个文件已经在旧目录，执行（示例）：
+
+```powershell
+& ".\scripts\install_regions.ps1" -SourceDir "C:\guance\guance-policy-intelligence-submission-main\web\backend\app\resources\regions" -DestinationDir "C:\guance\regions"
+& ".\start.ps1" -RegionsDir "C:\guance\regions" -HostAddress "127.0.0.1" -Port 8000
+```
+
+**不能将文件放在项目的 `app/resources/regions`，却把环境变量指向不存在的 `C:\guance\regions`。** 两者必须指向同一套有效文件。新启动脚本会明确设置 `GUANCE_POLICY_REGIONS_DIR`，并在缺文件时终止启动；后端会进一步检查地区树哈希、政策映射的版本与 RAG 发布身份是否一致。
+
+使用已有服务器的其他启动服务（如 Windows 服务、NSSM）时，将同样的环境变量设置到对应进程环境里，不能只在别的 PowerShell 窗口设置。
+
+服务启动后，访问 `/api/policies/regions` 和 `/api/policies/facets` 查看目录接口是否可用。上述资源不包含在提交源码和 RAG 数据包中，需从有权访问的原部署环境获取。
