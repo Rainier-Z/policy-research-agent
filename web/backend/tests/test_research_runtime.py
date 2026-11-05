@@ -48,7 +48,14 @@ def task(mode, targets, question="河北省产业结构研究", dimensions=None)
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("prefix,exclusive", [("", False), ("仅使用江苏省文献，", True), ("只", False)])
+@pytest.mark.parametrize("prefix,exclusive", [
+    ("", False),
+    ("仅使用江苏省文献，", True),
+    ("仅根据江苏省文献，", True),
+    ("仅依据江苏省文献，", True),
+    ("仅引用江苏省文献，", True),
+    ("只", False),
+])
 async def test_explicit_national_and_provincial_documents_respect_scope_intent(prefix, exclusive):
     national = replace(record("national", "中华人民共和国", "第十四个五年规划", title="国家十四五规划纲要"), admin_level="国家级")
     province = replace(record("province", "江苏省", "第十四个五年规划", title="江苏省十四五公共服务规划"), admin_level="省级")
