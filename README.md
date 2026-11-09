@@ -1,17 +1,18 @@
 ![管策智研 · 政策智能研究助手。让政策更可理解，让决策更有依据。](docs/images/banner.svg)
 
-# 策研台 · 政策智能研究 Agent
+# policy-research-agent
 
 > 面向政策研究人员、学生和公共事务团队，在同一工作区完成政策检索、证据核对和报告整理。
 
 ## 一、项目简介
 
-策研台围绕政策文献开展问答、梳理与比较。用户可以从一个问题开始，也可以先从目录选取政策。Agent 检索已配置的政策知识库，组织研究结果，并保留引句和出处，方便回到原文复核。
+`policy-research-agent` 是一个面向政策文献的研究 Agent，适用于政策研究、课程学习和公共事务分析。它帮助用户把分散在不同政策文件中的条款、支持措施和实施条件整理成可以查证、比较和复用的研究材料。
 
+用户可以提出一个自然语言问题，也可以先从文献目录选定政策。Agent 根据任务范围检索已配置的政策知识库，读取相关原文，再按问答、要素提取、文献梳理或比较分析的方式呈现结果。例如，比较两地的人才支持政策时，可以并排查看适用对象、支持方式和申报条件。
 
+结果保留关联引句和文献出处，方便回到原文核对条款和上下文。相关文献可以归入研究专题。在真实模式下，已完成的研究结果可以导出为 Word 报告或 Excel 研究表，供后续整理和复核。
 
-
-## 三、项目亮点和功能点
+## 二、项目亮点和功能点
 
 ### （一）项目亮点
 
@@ -31,7 +32,7 @@
 | 政策比较与多方案分析 | 对照指定政策或方案，呈现不同维度的差异及证据。 |
 | 文献目录 | 按标题或关键词检索并阅读正文。地区等维度筛选依赖匹配的运行时资源。 |
 
-## 四、工作流程
+## 三、工作流程
 
 ```mermaid
 flowchart LR
@@ -42,7 +43,7 @@ flowchart LR
     E --> F[按需导出研究结果]
 ```
 
-## 五、入门指南
+## 四、入门指南
 
 ### （一）前提条件
 
@@ -54,8 +55,8 @@ flowchart LR
 在 Windows PowerShell 中克隆仓库，安装前端依赖并启动演示模式：
 
 ```powershell
-git clone https://github.com/Rainier-Z/guance-policy-intelligence-submission.git
-Set-Location guance-policy-intelligence-submission/web/frontend
+git clone https://github.com/Rainier-Z/policy-research-agent.git
+Set-Location policy-research-agent/web/frontend
 npm ci
 $env:VITE_RESEARCH_MODE = 'demo'
 npm run dev
@@ -93,7 +94,7 @@ npm run dev
 
 打开 Vite 输出的本地地址即可使用。自定义 API 地址时设置 `VITE_API_BASE_URL`。地区筛选还需要与 RAG 发布批次匹配的映射资源。[后端配置说明](web/backend/README.md)
 
-## 六、示例与效果展示
+## 五、示例与效果展示
 
 ### （一）最小验证场景
 
@@ -113,7 +114,7 @@ npm run dev
 
 ![政策文献目录的关键词检索和筛选表单](docs/images/03-policy-catalog.png)
 
-## 七、代码目录
+## 六、代码目录
 
 - [Agent](agent/README.md)负责研究准备、任务执行、引文核验和结果组织。
 - [RAG 检索](rag库/README.md)负责发布数据恢复、政策检索和原文读取。

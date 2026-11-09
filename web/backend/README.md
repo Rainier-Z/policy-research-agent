@@ -40,10 +40,10 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 - `policy-region-map.json`
 - `policy-region-review.json`
 
-如果四个文件已经在旧目录，执行（示例）：
+如果四个文件已经在旧目录，将 `<original-regions-directory>` 替换成实际旧资源目录，再执行：
 
 ```powershell
-& ".\scripts\install_regions.ps1" -SourceDir "C:\guance\guance-policy-intelligence-submission-main\web\backend\app\resources\regions" -DestinationDir "C:\guance\regions"
+& ".\scripts\install_regions.ps1" -SourceDir "<original-regions-directory>" -DestinationDir "C:\guance\regions"
 & ".\start.ps1" -RegionsDir "C:\guance\regions" -HostAddress "127.0.0.1" -Port 8000
 ```
 
