@@ -1,4 +1,4 @@
-![策研台标志](docs/images/banner.svg)
+![管策智研 · 政策智能研究助手。让政策更可理解，让决策更有依据。](docs/images/banner.svg)
 
 # 策研台 · 政策智能研究 Agent
 
