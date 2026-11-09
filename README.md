@@ -4,6 +4,10 @@
 
 > 面向政策研究人员、学生和公共事务团队，在同一工作区完成政策检索、证据核对和报告整理。
 
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](agent/README.md)
+[![React 19](https://img.shields.io/badge/React-19-087EA4)](web/frontend/README.md)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)](web/backend/README.md)
+
 ## 一、项目简介
 
 `policy-research-agent` 是一个面向政策文献的研究 Agent，适用于政策研究、课程学习和公共事务分析。它帮助用户把分散在不同政策文件中的条款、支持措施和实施条件整理成可以查证、比较和复用的研究材料。
