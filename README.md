@@ -7,6 +7,7 @@
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB)](agent/README.md)
 [![React 19](https://img.shields.io/badge/React-19-087EA4)](web/frontend/README.md)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)](web/backend/README.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 一、项目简介
 
